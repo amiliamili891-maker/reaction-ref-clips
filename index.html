@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan de Contenido · Videos de Reacción · Martes y Miércoles</title>
+<style>
+  :root {
+    --pink:#c2185b; --pink-d:#880e4f; --pink-m:#ad1457;
+    --pink-l:#f8bbd0; --pink-bg:#fdf2f8; --plum:#6a1b9a; --amber:#f57c00;
+    --teal:#00897b; --violet:#5e35b1;
+  }
+  * { box-sizing:border-box; }
+  body {
+    font-family:-apple-system,"Helvetica Neue",Helvetica,Arial,"Apple Color Emoji",sans-serif;
+    font-size:16px; line-height:1.55; color:#1a1a1a; margin:0; background:#faf6f8;
+  }
+  .wrap { max-width:880px; margin:0 auto; padding:18px 16px 60px; }
+  h1 { font-size:27px; margin:6px 0 2px; color:var(--pink); letter-spacing:-0.3px; line-height:1.15; }
+  .sub { color:var(--pink-m); font-weight:600; margin:0 0 2px; }
+  .date { color:#9a7080; font-size:13px; margin:0 0 6px; }
+  h2 { font-size:20px; margin:30px 0 10px; padding-bottom:5px; border-bottom:2px solid var(--pink-l); color:var(--pink-d); }
+  p { margin:8px 0; }
+  ul,ol { margin:8px 0; padding-left:22px; }
+  li { margin:5px 0; }
+  strong { color:var(--plum); }
+  b { color:var(--pink-d); }
+  .intro { background:var(--pink-bg); border-left:4px solid #ec407a; padding:12px 16px; border-radius:6px; margin:12px 0 16px; }
+  .rule { background:#fff8e1; border-left:4px solid var(--amber); padding:12px 16px; border-radius:6px; margin:12px 0; }
+  .rule b { color:var(--amber); }
+  .big { font-size:18px; }
+  .checklist { padding-left:4px; margin:6px 0; }
+  .checklist li { list-style:none; position:relative; padding-left:26px; }
+  .checklist li::before { content:"✓"; position:absolute; left:0; font-size:16px; color:var(--amber); }
+  .lead { background:#f3e5f5; border-radius:8px; padding:10px 14px; color:#4a2f50; font-weight:600; }
+  /* menu cards (one per part of the day) */
+  .menu-cards { display:grid; gap:14px; }
+  .card { border-radius:12px; padding:16px 18px; border-left:6px solid var(--plum); background:#f3e5f5; }
+  .card h3 { margin:0 0 2px; color:var(--pink-d); font-size:18px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .card .note { margin:2px 0 8px; color:#5a4651; font-size:13.5px; font-style:italic; }
+  .card ul { margin:4px 0 0; padding-left:20px; }
+  .card li { color:#3b2f37; font-size:14.5px; }
+  .ct { display:inline-block; background:#fff; color:var(--violet); border:1px solid #d7ccef;
+     font-weight:700; font-size:12px; padding:2px 10px; border-radius:20px; white-space:nowrap; }
+  .when { display:inline-block; font-size:11px; font-weight:700; color:#fff; background:var(--violet);
+     padding:2px 9px; border-radius:20px; }
+  .when.night { background:#37306b; }
+  .when.both { background:linear-gradient(90deg,var(--violet),#37306b); }
+  /* card accents */
+  .c-morning { background:#f3e5f5; border-left-color:var(--plum); }
+  .c-ready { background:#fce4ec; border-left-color:var(--pink); }
+  .c-day { background:#e0f2f1; border-left-color:var(--teal); }
+  .c-day h3, .c-day .ct { color:var(--teal); }
+  .c-sleep { background:#ede7f6; border-left-color:var(--violet); }
+  /* example clips · hosted MP4s (no JS) so they play in Telegram's in-app browser */
+  .ex { margin:10px 0 2px; }
+  .ex video { width:100%; max-width:300px; border-radius:12px; background:#000; display:block; border:1px solid var(--pink-l); }
+  .ex.multi { display:flex; flex-direction:column; gap:10px; }
+  .ex.multi video { width:100%; max-width:300px; border-radius:12px; background:#000; display:block; border:1px solid var(--pink-l); }
+  .exlabel { font-size:11px; font-weight:700; color:var(--violet); margin:8px 0 3px; text-transform:uppercase; letter-spacing:0.3px; }
+  .exfall { display:inline-block; max-width:300px; margin:4px 0 2px; font-size:11.5px; font-weight:700; color:var(--violet); text-decoration:none; }
+  .exfall:active { opacity:0.6; }
+  .tip { background:var(--pink-bg); border-radius:8px; padding:6px 14px; }
+  .tip h4 { margin:12px 0 2px; color:var(--pink-m); font-size:14.5px; }
+  .footer { margin-top:26px; padding:14px 16px; background:linear-gradient(135deg,#fce4ec,#f8bbd0); border-radius:8px; font-style:italic; }
+  .goal { margin:18px 0; padding:16px 18px; background:linear-gradient(135deg,#fce4ec,#f3e5f5); border:2px solid var(--pink); border-radius:12px; text-align:center; }
+  .goal .num { display:block; font-size:24px; font-weight:800; color:var(--pink-d); margin:4px 0 6px; letter-spacing:-0.3px; }
+  .goal p { margin:4px 0; }
+  /* CSS-only controls · no JavaScript, so they work in Telegram's in-app viewer */
+  input.sr { position:absolute; width:1px; height:1px; opacity:0; pointer-events:none; }
+  .en { display:none; }
+  #lang-en:checked ~ .wrap .es { display:none; }
+  #lang-en:checked ~ .wrap .en { display:inline; }
+  #size-s:checked ~ .wrap { zoom:0.85; }
+  #size-l:checked ~ .wrap { zoom:1.18; }
+  .langbar { position:sticky; top:0; z-index:10; display:flex; justify-content:space-between; gap:6px;
+     flex-wrap:wrap; padding:8px 0; background:linear-gradient(#faf6f8,#faf6f8ee); }
+  .ctl { display:flex; gap:6px; }
+  .langbar label { border:1px solid var(--pink-l); background:#fff; color:var(--pink-d); font-weight:700;
+     padding:6px 14px; border-radius:20px; cursor:pointer; font-size:13px; line-height:1; display:inline-block;
+     -webkit-user-select:none; user-select:none; }
+  #lang-es:checked ~ .wrap label[for="lang-es"],
+  #lang-en:checked ~ .wrap label[for="lang-en"],
+  #size-s:checked ~ .wrap label[for="size-s"],
+  #size-m:checked ~ .wrap label[for="size-m"],
+  #size-l:checked ~ .wrap label[for="size-l"] { background:var(--pink); color:#fff; border-color:var(--pink); }
+  label[for="size-s"] { font-size:11px; padding:6px 11px; }
+  label[for="size-l"] { font-size:16px; padding:6px 12px; }
+  @media (max-width:520px) { h1{font-size:23px;} .card{padding:14px;} }
+  @media print {
+    .langbar { display:none; } body { background:#fff; }
+    .en { display:none !important; } .es { display:inline !important; }
+    h2 { page-break-after:avoid; } .card { page-break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+<input type="radio" name="lang" id="lang-es" class="sr" checked>
+<input type="radio" name="lang" id="lang-en" class="sr">
+<input type="radio" name="size" id="size-s" class="sr">
+<input type="radio" name="size" id="size-m" class="sr" checked>
+<input type="radio" name="size" id="size-l" class="sr">
+<div class="wrap">
+<div class="langbar">
+  <div class="ctl" title="Tamaño / Size">
+    <label for="size-s">A−</label>
+    <label for="size-m">A</label>
+    <label for="size-l">A+</label>
+  </div>
+  <div class="ctl">
+    <label for="lang-es">Español</label>
+    <label for="lang-en">English</label>
+  </div>
+</div>
+
+<h1><span class="es">🎬 Plan de Contenido · Videos de Reacción</span><span class="en">🎬 Content Plan · Reaction Videos</span></h1>
+<p class="sub"><span class="es">200 videos cortitos · 4 tipos × 25 tomas por día</span><span class="en">200 short videos · 4 types × 25 takes a day</span></p>
+<p class="date"><span class="es">Martes y miércoles · entrega antes del jueves 10:00 AM</span><span class="en">Tuesday &amp; Wednesday · due before Thursday 10:00 AM</span></p>
+
+<div class="intro">
+<p><strong><span class="es">¡Hola! 💕</span><span class="en">Hi! 💕</span></strong></p>
+<p><span class="es">Esta semana es distinta a la rutina de fotos y "día en tu vida". Es algo cortito, divertido y rápido: <strong>una tanda de videos de reacción estilo UGC.</strong> Nada de poses largas ni armar nada - solo tu carita reaccionando.</span><span class="en">This week is different from the usual photo / "day in your life" routine. It's something short, fun and fast: <strong>a batch of UGC-style reaction videos.</strong> No long poses, no setups - just your face reacting.</span></p>
+<p><span class="es">Son <strong>200 clips cortitos</strong> en total (100 el martes, 100 el miércoles), de 7 a 10 segundos cada uno. Vas a sacar 2 o 3 tomas buenas por minuto, así que cada día son <strong>menos de una hora</strong> de grabación real. En serio: es facilísimo y se hace volando. 🥂</span><span class="en">It's <strong>200 short clips</strong> total (100 on Tuesday, 100 on Wednesday), 7 to 10 seconds each. You'll get 2 or 3 good takes per minute, so each day is <strong>under an hour</strong> of actual recording. Truly: super easy and it flies by. 🥂</span></p>
+<p><span class="es">Si querés, podés grabar <strong>todo de una sola sentada (los 200).</strong> La división por día es solo la forma ideal; si te sale en una tirada, perfecto.</span><span class="en">If you like, you can record <strong>everything in one sitting (all 200).</strong> The per-day split is just the ideal shape; if it flows in one go, perfect.</span></p>
+</div>
+
+<h2><span class="es">⏰ Fecha de entrega</span><span class="en">⏰ Deadline</span></h2>
+<div class="rule">
+<p class="big"><b><span class="es">Todo entregado antes del jueves 10:00 AM.</span><span class="en">Everything delivered before Thursday 10:00 AM.</span></b> <span class="es">Esto es firme.</span><span class="en">This is firm.</span></p>
+<p><span class="es">Esta vez es más rápido que el cierre habitual del domingo porque estamos probando material nuevo y lo necesitamos enseguida. 🙏</span><span class="en">This time it's faster than the usual Sunday cutoff because we're testing new material and need it quickly. 🙏</span></p>
+<p><span class="es"><strong>📌 El plan de jueves + viernes te llega por separado</strong> - porque estamos testeando material nuevo y moviéndonos más rápido que de costumbre.</span><span class="en"><strong>📌 The Thursday + Friday plan arrives separately</strong> - because we're testing new material and moving faster than usual.</span></p>
+</div>
+
+<h2><span class="es">👀 Mirá esto PRIMERO</span><span class="en">👀 Watch this FIRST</span></h2>
+<div class="lead"><span class="es">Antes de grabar, mirá los clips de referencia para captar la <b>energía y el tono</b> exactos de estas reacciones. Es la mejor forma de clavar el vibe en la primera toma. <b>Cada tipo de abajo tiene su ejemplo embebido</b> - tocá ▶ para reproducirlo acá mismo en el teléfono. (Son referencia de vibe: tus tomas igual van en 60fps y 7–10 seg.)</span><span class="en">Before recording, watch the reference clips to catch the exact <b>energy and tone</b> of these reactions. It's the best way to nail the vibe on your first take. <b>Each type below has its example embedded</b> - tap ▶ to play it right here on your phone. (They're vibe reference: your takes still go at 60fps and 7–10 sec.)</span></div>
+
+<h2><span class="es">📸 Cómo filmar (lo técnico de siempre)</span><span class="en">📸 How to shoot (the usual technical rules)</span></h2>
+<ul>
+<li><b><span class="es">Cámara.</span><span class="en">Camera.</span></b> <span class="es">Celu vertical (9:16), rotación bloqueada. Limpiá el lente antes de empezar.</span><span class="en">Phone vertical (9:16), rotation locked. Wipe the lens before you start.</span></li>
+<li><b><span class="es">60fps sí o sí.</span><span class="en">60fps for sure.</span></b> <span class="es">Es lo único que importa del formato. La resolución da igual: 720p o 1080p, las dos sirven.</span><span class="en">That's the one thing that matters here. Resolution doesn't matter: 720p or 1080p, both work.</span></li>
+<li><b><span class="es">Duración.</span><span class="en">Length.</span></b> <span class="es">Cada clip de 7 a 10 segundos.</span><span class="en">Each clip 7 to 10 seconds.</span></li>
+<li><b><span class="es">Luz.</span><span class="en">Light.</span></b> <span class="es">Favorecedora y de frente, nunca detrás tuyo (si no, salís en sombra).</span><span class="en">Flattering and in front of you, never behind (or you become a silhouette).</span></li>
+<li><b><span class="es">Sin hablar.</span><span class="en">No talking.</span></b> <span class="es">No hace falta - podés quedarte en silencio.</span><span class="en">Not needed - you can stay quiet.</span></li>
+<li><b><span class="es">Qué NO hacer.</span><span class="en">A few don'ts.</span></b> <span class="es">Nada en cuadro que delate tu ubicación o país: enchufes, etiquetas, textos, vista por la ventana, pantallas, objetos regionales. Mandá todo crudo, sin editar. Sugerente, nunca explícito, sin desnudez.</span><span class="en">Nothing in frame that gives away your location or country: outlets, labels, text, window views, screens, regional items. Send everything raw, unedited. Suggestive, never explicit, no nudity.</span></li>
+</ul>
+
+<h2><span class="es">🎬 Los 4 tipos de video (las "recetas")</span><span class="en">🎬 The 4 video types (the "recipes")</span></h2>
+<p class="lead"><span class="es">Cada tipo son <b>25 tomas</b>. Mismo formato siempre: vertical, 7–10 seg, 60fps, en silencio. 4 tipos × 25 = <b>100 videos por día.</b></span><span class="en">Each type is <b>25 takes</b>. Same format every time: vertical, 7–10 sec, 60fps, silent. 4 types × 25 = <b>100 videos per day.</b></span></p>
+
+<div class="menu-cards">
+
+<!-- A1 -->
+<div class="card c-morning">
+<h3><span class="when">A1</span> <span class="es">1 · Shock + acercar el teléfono</span><span class="en">1 · Shock + bring phone closer</span> <span class="ct"><span class="es">25 tomas</span><span class="en">25 takes</span></span></h3>
+<p class="note"><span class="es">En algo revelador. Que se note la incredulidad.</span><span class="en">In something revealing. Let the disbelief show.</span></p>
+<ul>
+<li><span class="es">Te ponés genuinamente <b>shockeada</b> con algo que ves</span><span class="en">You look genuinely <b>shocked</b> at something you see</span></li>
+<li><span class="es">Despacito acercás el celu a tu cara, como si no pudieras creerlo</span><span class="en">Slowly bring the phone closer to your face, like you can't believe it</span></li>
+</ul>
+<p class="exlabel"><span class="es">▶ Ejemplo · tocá para reproducir</span><span class="en">▶ Example · tap to play</span></p>
+<div class="ex"><video controls playsinline webkit-playsinline preload="metadata" src="Example-A1.mp4"></video><a class="exfall" href="Example-A1.mp4" target="_blank" rel="noopener"><span class="es">¿No carga? Abrir ▶</span><span class="en">Not loading? Open ▶</span></a></div>
+</div>
+
+<!-- B1 -->
+<div class="card c-ready">
+<h3><span class="when">B1</span> <span class="es">2 · Mirada de costado + ojos entrecerrados</span><span class="en">2 · Side glance + squint</span> <span class="ct"><span class="es">25 tomas</span><span class="en">25 takes</span></span></h3>
+<p class="note"><span class="es">Pequeño, sutil, intrigante.</span><span class="en">Small, subtle, intriguing.</span></p>
+<ul>
+<li><span class="es">Mirás hacia un costado</span><span class="en">You look off to the side</span></li>
+<li><span class="es">Entrecerrás los ojos (squint), como reaccionando a algo que viste de reojo</span><span class="en">Narrow your eyes (squint), like reacting to something you caught out of the corner of your eye</span></li>
+</ul>
+<p class="exlabel"><span class="es">▶ Ejemplo · tocá para reproducir</span><span class="en">▶ Example · tap to play</span></p>
+<div class="ex"><video controls playsinline webkit-playsinline preload="metadata" src="Example-B1.mp4"></video><a class="exfall" href="Example-B1.mp4" target="_blank" rel="noopener"><span class="es">¿No carga? Abrir ▶</span><span class="en">Not loading? Open ▶</span></a></div>
+</div>
+
+<!-- C1-C4 -->
+<div class="card c-day">
+<h3><span class="when both">C1–C4</span> <span class="es">3 · Mirada shockeada + taparte la boca</span><span class="en">3 · Shocked side-look + mouth cover</span> <span class="ct"><span class="es">25 tomas</span><span class="en">25 takes</span></span></h3>
+<p class="note"><span class="es">Ese clásico "no puede ser".</span><span class="en">That classic "no way".</span></p>
+<ul>
+<li><span class="es">Mirás hacia el costado shockeada</span><span class="en">You look to the side shocked</span></li>
+<li><span class="es">Te <b>tapás la boca</b> con la mano</span><span class="en">You <b>cover your mouth</b> with your hand</span></li>
+<li><span class="es">Volvés a mirar a la cámara frontal</span><span class="en">Then look back into the front camera</span></li>
+</ul>
+<p class="exlabel"><span class="es">▶ Ejemplos (C1–C4) · tocá para reproducir</span><span class="en">▶ Examples (C1–C4) · tap to play</span></p>
+<div class="ex multi"><video controls playsinline webkit-playsinline preload="metadata" src="Example-C1.mp4"></video><a class="exfall" href="Example-C1.mp4" target="_blank" rel="noopener"><span class="es">¿No carga? Abrir ▶</span><span class="en">Not loading? Open ▶</span></a><video controls playsinline webkit-playsinline preload="metadata" src="Example-C2.mp4"></video><a class="exfall" href="Example-C2.mp4" target="_blank" rel="noopener"><span class="es">¿No carga? Abrir ▶</span><span class="en">Not loading? Open ▶</span></a><video controls playsinline webkit-playsinline preload="metadata" src="Example-C3.mp4"></video><a class="exfall" href="Example-C3.mp4" target="_blank" rel="noopener"><span class="es">¿No carga? Abrir ▶</span><span class="en">Not loading? Open ▶</span></a><video controls playsinline webkit-playsinline preload="metadata" src="Example-C4.mp4"></video><a class="exfall" href="Example-C4.mp4" target="_blank" rel="noopener"><span class="es">¿No carga? Abrir ▶</span><span class="en">Not loading? Open ▶</span></a></div>
+</div>
+
+<!-- D1 -->
+<div class="card c-sleep">
+<h3><span class="when night">D1</span> <span class="es">4 · La risa "no vas a creer esto"</span><span class="en">4 · The "you won't believe this" laugh</span> <span class="ct"><span class="es">25 tomas</span><span class="en">25 takes</span></span></h3>
+<p class="note"><span class="es">Como si encontraste algo increíble en tu teléfono.</span><span class="en">Like you just found something crazy on your phone.</span></p>
+<ul>
+<li><span class="es">Mirás hacia el costado</span><span class="en">You look to the side</span></li>
+<li><span class="es">Te das vuelta a la cámara <b>riéndote</b> y te tapás la boca</span><span class="en">Turn to the camera <b>laughing</b> and cover your mouth</span></li>
+</ul>
+<p class="exlabel"><span class="es">▶ Ejemplo · tocá para reproducir</span><span class="en">▶ Example · tap to play</span></p>
+<div class="ex"><video controls playsinline webkit-playsinline preload="metadata" src="Example-D1.mp4"></video><a class="exfall" href="Example-D1.mp4" target="_blank" rel="noopener"><span class="es">¿No carga? Abrir ▶</span><span class="en">Not loading? Open ▶</span></a></div>
+</div>
+
+</div>
+
+<h2><span class="es">✨ El filtro clave: el "scroll test"</span><span class="en">✨ The key filter: the "scroll test"</span></h2>
+<div class="rule">
+<p><span class="es">Después de cada toma, miratela <strong>como espectadora.</strong> Imaginate que estás scrolleando TikTok / Instagram / lo que sea, y aparece este clip:</span><span class="en">After each take, watch it back <strong>as a viewer.</strong> Imagine you're scrolling TikTok / Instagram / anywhere, and this clip pops up:</span></p>
+<ul>
+<li><span class="es">¿Esa reacción te haría <b>frenar el dedo</b> y mirar?</span><span class="en">Would that reaction make you <b>stop scrolling</b> and watch?</span></li>
+<li><span class="es">¿O seguirías scrolleando sin pensarlo?</span><span class="en">Or would you keep scrolling without a second thought?</span></li>
+</ul>
+<p class="big"><b><span class="es">Si no te frena, rehacela.</span><span class="en">If it wouldn't stop you, redo it.</span></b> <span class="es">Así de simple. Este es el único filtro que decide si una toma es lo bastante buena. 🎯</span><span class="en">That simple. This is the single filter that decides whether a take is good enough. 🎯</span></p>
+</div>
+
+<h2><span class="es">📱 Si el teléfono se queda sin espacio</span><span class="en">📱 If your phone runs low on storage</span></h2>
+<div class="rule">
+<p><span class="es">Con tantos videos puede llenarse la memoria a mitad de camino. <strong>No pares por eso.</strong> Tenés dos opciones:</span><span class="en">With this many videos your storage might fill up halfway through. <strong>Don't stop because of that.</strong> You have two options:</span></p>
+<ul>
+<li><span class="es"><b>(a)</b> Comprá más espacio en iCloud, o</span><span class="en"><b>(a)</b> Buy more iCloud space, or</span></li>
+<li><span class="es"><b>(b)</b> Subí lo que ya grabaste a Dropbox o Telegram, borralo del teléfono, seguí grabando, y repetí ese ciclo <strong>subir → borrar → grabar</strong> hasta terminar.</span><span class="en"><b>(b)</b> Upload what you've already recorded to Dropbox or Telegram, delete it off the phone, keep recording, and repeat that <strong>upload → delete → record</strong> cycle until done.</span></li>
+</ul>
+<p><span class="es">Lo importante: no cortes antes de tiempo por falta de espacio. 💕</span><span class="en">The point: don't stop early because of storage. 💕</span></p>
+</div>
+
+<h2><span class="es">👗 Los dos días (outfits y look)</span><span class="en">👗 The two days (outfits and look)</span></h2>
+<p class="lead"><span class="es">El gancho visual es TODO en este formato. Querés verte <b>genuinamente atractiva</b>: pelo y maquillaje como vos te ves <b>más linda</b>, y algo que favorezca y resalte el busto - un corpiño push-up va perfecto. Sugerente, nunca explícito, sin desnudez. 💄✨</span><span class="en">The visual hook is EVERYTHING in this format. You want to look <b>genuinely attractive</b>: hair and makeup the way YOU find yourself <b>most attractive</b>, and something flattering that emphasizes your bust - a push-up bra works perfectly. Suggestive, never explicit, no nudity. 💄✨</span></p>
+
+<div class="menu-cards">
+
+<!-- TUESDAY -->
+<div class="card c-ready">
+<h3><span class="when">🌸 <span class="es">Martes</span><span class="en">Tuesday</span></span> <span class="es">Día 1</span><span class="en">Day 1</span> <span class="ct"><span class="es">100 videos · 2 outfits</span><span class="en">100 videos · 2 outfits</span></span></h3>
+<p class="note"><span class="es">Los 4 tipos, 25 tomas cada uno. Repartí los tipos entre los dos looks como te quede más cómodo.</span><span class="en">All 4 types, 25 takes each. Split the types across the two looks however feels easiest.</span></p>
+<ul>
+<li><span class="es"><b>Outfit 1:</b> algo que resalte el busto (push-up ideal), favorecedor</span><span class="en"><b>Outfit 1:</b> something that emphasizes your bust (push-up ideal), flattering</span></li>
+<li><span class="es"><b>Outfit 2:</b> otro look distinto, mismo criterio: favorecedor y con escote que enganche</span><span class="en"><b>Outfit 2:</b> a different look, same idea: flattering, with a neckline that hooks the eye</span></li>
+<li><span class="es"><b>Reparto:</b> A1 ×25 · B1 ×25 · C1–C4 ×25 · D1 ×25</span><span class="en"><b>Breakdown:</b> A1 ×25 · B1 ×25 · C1–C4 ×25 · D1 ×25</span></li>
+</ul>
+</div>
+
+<!-- WEDNESDAY -->
+<div class="card c-day">
+<h3><span class="when both">🌷 <span class="es">Miércoles</span><span class="en">Wednesday</span></span> <span class="es">Día 2</span><span class="en">Day 2</span> <span class="ct"><span class="es">100 videos · 2 outfits</span><span class="en">100 videos · 2 outfits</span></span></h3>
+<p class="note"><span class="es">Mismos 4 tipos, 25 tomas cada uno. Otra vez 2 outfits, pero DISTINTOS a los del martes - así los dos días no se ven iguales.</span><span class="en">Same 4 types, 25 takes each. Again 2 outfits, but DIFFERENT from Tuesday's - so the two days don't look identical.</span></p>
+<ul>
+<li><span class="es"><b>Outfit 3:</b> nuevo look, mismo criterio: resalta el busto (push-up ideal), favorecedor</span><span class="en"><b>Outfit 3:</b> new look, same idea: emphasizes your bust (push-up ideal), flattering</span></li>
+<li><span class="es"><b>Outfit 4:</b> otro distinto más - color, escote o estilo diferente al resto</span><span class="en"><b>Outfit 4:</b> yet another different one - different color, neckline or style from the rest</span></li>
+<li><span class="es"><b>Reparto:</b> A1 ×25 · B1 ×25 · C1–C4 ×25 · D1 ×25</span><span class="en"><b>Breakdown:</b> A1 ×25 · B1 ×25 · C1–C4 ×25 · D1 ×25</span></li>
+</ul>
+</div>
+
+</div>
+
+<h2><span class="es">✅ Checklist por día (sacale captura)</span><span class="en">✅ Per-day checklist (screenshot this)</span></h2>
+<p class="lead"><span class="es">El objetivo es el mismo los dos días: <b>100 videos · 4 tipos × 25 tomas.</b> Está repetido para que vayas tildando martes y miércoles uno por uno.</span><span class="en">The target is the same both days: <b>100 videos · 4 types × 25 takes.</b> It's repeated so you tick off Tuesday and Wednesday one by one.</span></p>
+<div class="rule">
+
+<p><b><span class="es">🌸 MARTES · 100 videos</span><span class="en">🌸 TUESDAY · 100 videos</span></b></p>
+<ul class="checklist">
+<li><span class="es">Grabando a <b>60fps</b></span><span class="en">Recording at <b>60fps</b></span></li>
+<li><span class="es">Cada clip de <b>7–10 seg</b></span><span class="en">Each clip <b>7–10 sec</b></span></li>
+<li><span class="es"><b>4 tipos × 25 tomas</b> = 100 videos</span><span class="en"><b>4 types × 25 takes</b> = 100 videos</span></li>
+<li><span class="es"><b>2 outfits</b> en el día</span><span class="en"><b>2 outfits</b> for the day</span></li>
+<li><span class="es">Corpiño push-up / look favorecedor y con escote</span><span class="en">Push-up bra / flattering look with neckline</span></li>
+<li><span class="es">Pelo y maquillaje hechos (como me veo más linda)</span><span class="en">Hair &amp; makeup done (how I look best)</span></li>
+<li><span class="es"><b>Scroll test</b> a cada toma - si no frena, rehacer</span><span class="en"><b>Scroll test</b> on each take - if it doesn't stop you, redo</span></li>
+<li><span class="es">Plan de memoria listo (iCloud o subir→borrar→grabar)</span><span class="en">Storage plan ready (iCloud or upload→delete→record)</span></li>
+<li><span class="es">Nada que delate ubicación / país en cuadro</span><span class="en">Nothing that gives away location / country in frame</span></li>
+<li><span class="es">Mandar todo <b>crudo, sin editar</b></span><span class="en">Send everything <b>raw, unedited</b></span></li>
+</ul>
+
+<p><b><span class="es">🌷 MIÉRCOLES · 100 videos</span><span class="en">🌷 WEDNESDAY · 100 videos</span></b></p>
+<ul class="checklist">
+<li><span class="es">Grabando a <b>60fps</b></span><span class="en">Recording at <b>60fps</b></span></li>
+<li><span class="es">Cada clip de <b>7–10 seg</b></span><span class="en">Each clip <b>7–10 sec</b></span></li>
+<li><span class="es"><b>4 tipos × 25 tomas</b> = 100 videos</span><span class="en"><b>4 types × 25 takes</b> = 100 videos</span></li>
+<li><span class="es"><b>2 outfits NUEVOS</b> (distintos al martes)</span><span class="en"><b>2 NEW outfits</b> (different from Tuesday)</span></li>
+<li><span class="es">Corpiño push-up / look favorecedor y con escote</span><span class="en">Push-up bra / flattering look with neckline</span></li>
+<li><span class="es">Pelo y maquillaje hechos (como me veo más linda)</span><span class="en">Hair &amp; makeup done (how I look best)</span></li>
+<li><span class="es"><b>Scroll test</b> a cada toma - si no frena, rehacer</span><span class="en"><b>Scroll test</b> on each take - if it doesn't stop you, redo</span></li>
+<li><span class="es">Plan de memoria listo (iCloud o subir→borrar→grabar)</span><span class="en">Storage plan ready (iCloud or upload→delete→record)</span></li>
+<li><span class="es">Nada que delate ubicación / país en cuadro</span><span class="en">Nothing that gives away location / country in frame</span></li>
+<li><span class="es">Mandar todo <b>crudo, sin editar</b></span><span class="en">Send everything <b>raw, unedited</b></span></li>
+</ul>
+
+</div>
+
+<div class="goal">
+<p><b><span class="es">🎯 Al final de estos dos días vas a tener</span><span class="en">🎯 By the end of these two days you'll have</span></b></p>
+<span class="num"><span class="es">200 videos de reacción</span><span class="en">200 reaction videos</span></span>
+<p><span class="es"><strong>200 clips cortitos</strong> (7–10 seg, 60fps), 100 el martes y 100 el miércoles - 4 tipos × 25 tomas cada día. Menos de una hora de grabación real por día. Entregado antes del <strong>jueves 10:00 AM</strong>.</span><span class="en"><strong>200 short clips</strong> (7–10 sec, 60fps), 100 on Tuesday and 100 on Wednesday - 4 types × 25 takes each day. Under an hour of actual recording per day. Delivered before <strong>Thursday 10:00 AM</strong>.</span></p>
+</div>
+
+<div class="footer">
+<p><span class="es">Divertite con esto 💕 Rapidito, fácil y divertido - en menos de una hora por día ya está. Mirá las referencias, sentí el ritmo y grabá tranqui. Confío en vos, te va a salir hermoso.</span><span class="en">Have fun with it 💕 Quick, easy and fun - under an hour a day and you're done. Watch the references, feel the rhythm and record relaxed. I trust you, it's going to come out beautiful.</span></p>
+<p style="text-align:right;margin-top:8px;"><strong>xx 💕</strong></p>
+</div>
+
+</div>
+</body>
+</html>
